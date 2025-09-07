@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>BOUCHRA — Boutique</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ff5ea3, #ff80c0, #ff99cc);
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: red;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      text-shadow: 2px 2px 0 #fff,
+                   4px 4px 0 #000,
+                   6px 6px 0 #ffb3c6;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #222;
+    }
+
+    .section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 30px 20px;
+    }
+
+    .section h2 {
+      text-align: center;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 12px;
+      padding: 15px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .card h4 {
+      margin: 10px 0;
+      font-size: 18px;
+      color: #fff;
+    }
+
+    .price {
+      font-weight: bold;
+      color: #222;
+    }
+
+    .sizes {
+      margin: 10px 0;
+    }
+
+    .sizes button {
+      margin: 3px;
+      padding: 6px 12px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      background: #fff;
+      color: #000;
+    }
+
+    .card button.add {
+      margin-top: 10px;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 8px;
+      background: #000;
+      color: #fff;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    /* cart button */
+    #cart-btn {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      background: #000;
+      color: #fff;
+      padding: 12px 18px;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    #cart-panel {
+      position: fixed;
+      right: 0;
+      top: 0;
+      width: 350px;
+      height: 100%;
+      background: #222;
+      padding: 20px;
+      transform: translateX(100%);
+      transition: 0.3s;
+      overflow-y: auto;
+    }
+
+    #cart-panel.open {
+      transform: translateX(0);
+    }
+
+    #cart-panel h3 {
+      margin-top: 0;
+      color: #fff;
+    }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 10px 0;
+      border-bottom: 1px solid #444;
+      padding-bottom: 10px;
+    }
+
+    .cart-item img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    .checkout-btn {
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      border: none;
+      border-radius: 10px;
+      background: red;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <h1>BOUCHRA</h1>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h2>Vintage & Modern Vibes</h2>
+    <p>Découvrez la collection exclusive Bouchra : vestes, hoodies, jeans et plus.</p>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="section">
+    <h2>Notre Collection</h2>
+    <div class="products">
+      <!-- produit 1 -->
+      <div class="card" data-title="Hoodie Oversize" data-price="300">
+        <img src="images/p1.jpg" alt="Produit 1">
+        <h4>Hoodie Oversize</h4>
+        <div class="price">300 DH</div>
+        <div class="sizes">
+          <button>XS</button><button>S</button><button>M</button>
+          <button>L</button><button>XL</button><button>XXL</button>
+        </div>
+        <button class="add" onclick="addToCart(this)">Ajouter au Panier</button>
+      </div>
+
+      <!-- produit 2 -->
+      <div class="card" data-title="Veste Vintage" data-price="500">
+        <img src="images/p2.jpg" alt="Produit 2">
+        <h4>Veste Vintage</h4>
+        <div class="price">500 DH</div>
+        <div class="sizes">
+          <button>S</button><button>M</button><button>L</button>
+        </div>
+        <button class="add" onclick="addToCart(this)">Ajouter au Panier</button>
+      </div>
+
+      <!-- produit 3 -->
+      <div class="card" data-title="Jean Large" data-price="400">
+        <img src="images/p3.jpg" alt="Produit 3">
+        <h4>Jean Large</h4>
+        <div class="price">400 DH</div>
+        <div class="sizes">
+          <button>M</button><button>L</button><button>XL</button>
+        </div>
+        <button class="add" onclick="addToCart(this)">Ajouter au Panier</button>
+      </div>
+
+      <!-- produit 4 -->
+      <div class="card" data-title="T-shirt Streetwear" data-price="250">
+        <img src="images/p4.jpg" alt="Produit 4">
+        <h4>T-shirt Streetwear</h4>
+        <div class="price">250 DH</div>
+        <div class="sizes">
+          <button>S</button><button>M</button><button>L</button><button>XL</button>
+        </div>
+        <button class="add" onclick="addToCart(this)">Ajouter au Panier</button>
+      </div>
+
+      <!-- produit 5 -->
+      <div class="card" data-title="Pull Rétro" data-price="350">
+        <img src="images/p5.jpg" alt="Produit 5">
+        <h4>Pull Rétro</h4>
+        <div class="price">350 DH</div>
+        <div class="sizes">
+          <button>M</button><button>L</button><button>XL</button>
+        </div>
+        <button class="add" onclick="addToCart(this)">Ajouter au Panier</button>
+      </div>
+
+      <!-- produit 6 -->
+      <div class="card" data-title="Bomber Jacket" data-price="600">
+        <img src="images/p6.jpg" alt="Produit 6">
+        <h4>Bomber Jacket</h4>
+        <div class="price">600 DH</div>
+        <div class="sizes">
+          <button>S</button><button>M</button><button>L</button><button>XL</button>
+        </div>
+        <button class="add" onclick="addToCart(this)">Ajouter au Panier</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CART BUTTON -->
+  <button id="cart-btn" onclick="toggleCart()">🛒 Panier</button>
+
+  <!-- CART PANEL -->
+  <aside id="cart-panel">
+    <h3>Votre Panier</h3>
+    <div id="cart-items"></div>
+    <div id="cart-total" style="margin-top:10px;">Total: 0 DH</div>
+    <button class="checkout-btn" onclick="window.location.href='checkout.html'">Passer au paiement</button>
+  </aside>
+
+  <script>
+    let cart = [];
+
+    function addToCart(btn) {
+      const card = btn.closest('.card');
+      const title = card.dataset.title;
+      const price = parseInt(card.dataset.price);
+      const img = card.querySelector('img').src;
+
+      cart.push({title, price, img});
+      updateCartUI();
+      document.getElementById('cart-panel').classList.add('open');
+    }
+
+    function updateCartUI() {
+      const items = document.getElementById('cart-items');
+      items.innerHTML = '';
+      let total = 0;
+      cart.forEach((p, i) => {
+        total += p.price;
+        items.innerHTML += `
+          <div class="cart-item">
+            <img src="${p.img}" alt="">
+            <div>
+              <b>${p.title}</b><br>${p.price} DH
+            </div>
+            <button onclick="removeItem(${i})" style="margin-left:auto;background:#ff3333;color:#fff;border:none;padding:5px 8px;border-radius:6px;">X</button>
+          </div>`;
+      });
+      document.getElementById('cart-total').innerText = "Total: " + total + " DH";
+    }
+
+    function removeItem(i) {
+      cart.splice(i, 1);
+      updateCartUI();
+    }
+
+    function toggleCart() {
+      document.getElementById('cart-panel').classList.toggle('open');
+    }
+  </script>
+</body>
+</html>

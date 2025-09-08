@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <title>BOUCHRA — Boutique</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     body {
       margin: 0;
@@ -16,6 +18,7 @@
     header {
       padding: 20px;
       text-align: center;
+      position: relative;
     }
 
     header h1 {
@@ -27,6 +30,28 @@
       text-shadow: 2px 2px 0 #fff,
                    4px 4px 0 #000,
                    6px 6px 0 #ffb3c6;
+    }
+
+    /* --- Social Icons --- */
+    .social-icons {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 1000;
+    }
+
+    .social-icons a {
+      color: #fff;
+      font-size: 1.8rem;
+      transition: 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #000;
+      transform: scale(1.2);
     }
 
     .hero {
@@ -113,7 +138,6 @@
       font-weight: bold;
     }
 
-    /* cart button */
     #cart-btn {
       position: fixed;
       right: 20px;
@@ -179,6 +203,22 @@
   </style>
 </head>
 <body>
+
+  <!-- Social Icons -->
+  <div class="social-icons">
+    <a href="https://wa.me/212666482611" target="_blank" title="WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="https://www.tiktok.com/@yassou_s_kitchen?_t=ZS-8zYiQuJJyX1&_r=1" target="_blank" title="TikTok">
+      <i class="fab fa-tiktok"></i>
+    </a>
+    <a href="https://www.instagram.com/shop_en_ligne777?utm_source=ig_web_button_share_sheet&igsh=cHhrNGh4aDFobm4z" target="_blank" title="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://www.youtube.com/@bouchradior9898" target="_blank" title="YouTube">
+      <i class="fab fa-youtube"></i>
+    </a>
+  </div>
 
   <!-- HEADER -->
   <header>
